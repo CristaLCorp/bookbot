@@ -8,7 +8,7 @@ def count_letters(s: str):
     return letters
 
 def print_char_count(chars: dict[str, int]) -> None :
-    for k, v in chars.items() :
+    for k, v in sorted(chars.items(), key=lambda item: item[1], reverse=True) :
         if k.isalpha() :
             print(f"The '{k}' character was found {v} times")
 
@@ -22,6 +22,7 @@ def print_full_report(s: str, file: str) -> None:
     print_char_count(count_letters(s))
     print("--- End report ---")
 
+
 def main():
 
     file: str = "books/frankenstein.txt"
@@ -30,4 +31,5 @@ def main():
         file_content = f.read()
 
     print_full_report(file_content, file)
+
 main()
